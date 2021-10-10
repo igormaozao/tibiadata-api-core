@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using TibiaDataApiCore.Domain.Commons;
 using static TibiaDataApiCore.Domain.BaseApiData;
 using static TibiaDataApiCore.Domain.CharactersData;
 using static TibiaDataApiCore.Domain.CharactersData.Character;
@@ -36,7 +36,7 @@ namespace TibiaDataApiCore.Domain {
 
             public record CharacterOtherCharacters(string name, string world, string status);
 
-            public record TimeZoneDate(DateTime date, short timezoneType, string timezone);
+            
         }
     }
 }
