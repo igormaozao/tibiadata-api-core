@@ -12,7 +12,7 @@ ___
 |API|Supported|
 |---|---|
 |Characters|:heavy_check_mark:|
-|Guilds|:x:|
+|Guilds|:heavy_check_mark:|
 |Highscores|:heavy_check_mark:|
 |Houses|:x:|
 |News|:x:|
