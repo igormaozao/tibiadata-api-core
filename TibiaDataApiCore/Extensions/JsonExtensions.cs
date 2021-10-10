@@ -5,7 +5,8 @@ namespace TibiaDataApiCore.Extensions {
     public static class JsonExtensions {
 
         static JsonSerializerSettings jsonSettings = new JsonSerializerSettings() {
-            ContractResolver = new DefaultContractResolver { NamingStrategy = new SnakeCaseNamingStrategy { ProcessDictionaryKeys = true } }
+            ContractResolver = new DefaultContractResolver { NamingStrategy = new SnakeCaseNamingStrategy { ProcessDictionaryKeys = true } },
+            DefaultValueHandling = DefaultValueHandling.Populate
         };
 
         public static T Deserialize<T>(this string data) {
