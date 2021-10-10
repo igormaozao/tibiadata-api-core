@@ -70,5 +70,17 @@ namespace TibiaDataApiCore {
             string data = await httpClient.GetStringAsync(GUILD_FULL_URL);
             return data.Deserialize<GuildInformationData>();
         }
+
+        public async Task<HousesData> GetHouses(string worldName, string city = "Ab'dendriel", string type = "houses") {
+            string HOUSES_FULL_URL = $"{TibiaDataFullUrl}/houses/{worldName}/{city}/{type}.json";
+            string data = await httpClient.GetStringAsync(HOUSES_FULL_URL);
+            return data.Deserialize<HousesData>();
+        }
+
+        public async Task<HouseInformationData> GetHouse(string worldName, int houseId) {
+            string HOUSE_FULL_URL = $"{TibiaDataFullUrl}/house/{worldName}/{houseId}.json";
+            string data = await httpClient.GetStringAsync(HOUSE_FULL_URL);
+            return data.Deserialize<HouseInformationData>();
+        }
     }
 }
