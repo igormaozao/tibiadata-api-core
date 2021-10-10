@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Threading.Tasks;
 using TibiaDataApiCore;
 using Xunit;
@@ -48,6 +49,22 @@ namespace TibiaDataApiCoreTest {
             Assert.NotNull(data.world.playersOnline);
 
             Assert.True(data.world.playersOnline.Count > 0);
+        }
+
+        [Fact]
+        public async Task Should_Call_Live_Character_Data_Correctly() {
+            var charName = "Rogi Suvan";
+            var data = await tibiaDataApi.GetCharacter(charName);
+
+            Assert.NotNull(data);
+            Assert.NotNull(data.information);
+            Assert.NotNull(data.characters);
+
+            Assert.Equal(charName, data.characters.data.name);
+            Assert.Equal("Thais", data.characters.data.residence);
+            Assert.Equal("Relembra", data.characters.data.world);
+
+            Assert.Contains(data.characters.otherCharacters, c => c.name == "Rogi Returns");
         }
     }
 }
