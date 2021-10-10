@@ -1,7 +1,7 @@
 
 # TibiaData API - Dotnet Core
 
-A .NET library to call and handle data from [TibiaData API](http://api.tibiadata.com/)
+A .NET library to call and handle data from [TibiaData API](http://tibiadata.com/)
 
 ___
 
