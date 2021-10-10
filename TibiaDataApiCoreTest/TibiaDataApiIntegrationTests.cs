@@ -66,5 +66,41 @@ namespace TibiaDataApiCoreTest {
 
             Assert.Contains(data.characters.otherCharacters, c => c.name == "Rogi Returns");
         }
+
+        [Fact]
+        public async Task Should_Call_Live_Guilds_Data_Correctly() {
+            var worldName = "Antica";
+            var data = await tibiaDataApi.GetGuilds(worldName);
+
+            Assert.NotNull(data);
+            Assert.NotNull(data.information);
+            Assert.NotNull(data.guilds);
+            Assert.NotNull(data.guilds.world);
+            Assert.NotNull(data.guilds.active);
+
+            Assert.Equal(worldName, data.guilds.world);
+
+            Assert.True(data.guilds.active.Count > 0);
+        }
+
+        [Fact]
+        public async Task Should_Call_Live_Specific_Guild_Data_Correctly() {
+            var guildName = "Red Rose";
+            var guildWorld = "Antica";
+            var redRoseFoundDate = "2002-02-18";
+
+            var data = await tibiaDataApi.GetGuild(guildName);
+
+            Assert.NotNull(data);
+            Assert.NotNull(data.information);
+            Assert.NotNull(data.guild);
+            Assert.NotNull(data.guild.data);
+
+            Assert.Equal(guildName, data.guild.data.name);
+            Assert.Equal(guildWorld, data.guild.data.world);
+            Assert.Equal(redRoseFoundDate, data.guild.data.founded);
+
+            Assert.True(data.guild.members.Count > 0);
+        }
     }
 }
