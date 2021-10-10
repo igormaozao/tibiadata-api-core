@@ -102,5 +102,41 @@ namespace TibiaDataApiCoreTest {
 
             Assert.True(data.guild.members.Count > 0);
         }
+
+        [Fact]
+        public async Task Should_Call_Live_Houses_Data_Correctly() {
+            var worldName = "Antica";
+            var city = "Venore";
+            var houseType = "houses";
+
+            var data = await tibiaDataApi.GetHouses(worldName, city, houseType);
+
+            Assert.NotNull(data);
+            Assert.NotNull(data.information);
+            Assert.NotNull(data.houses);
+
+            Assert.Equal(worldName, data.houses.world);
+            Assert.Equal(city, data.houses.town);
+
+            Assert.True(data.houses.houses.Count > 0);
+        }
+
+        [Fact]
+        public async Task Should_Call_Live_House_Information_Data_Correctly() {
+            var worldName = "Antica";
+            var houseType = "guildhall";
+            var houseId = 35037;
+
+            var data = await tibiaDataApi.GetHouse(worldName, houseId);
+
+            Assert.NotNull(data);
+            Assert.NotNull(data.information);
+            Assert.NotNull(data.house);
+            Assert.NotNull(data.house.status);
+
+            Assert.Equal(worldName, data.house.world);
+            Assert.Equal(houseType, data.house.type);
+            Assert.Equal(houseId, data.house.houseid);
+        }
     }
 }
