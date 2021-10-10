@@ -58,5 +58,17 @@ namespace TibiaDataApiCore {
             string data = await httpClient.GetStringAsync(CHARACTERS_FULL_URL);
             return data.Deserialize<CharactersData>();
         }
+
+        public async Task<GuildsData> GetGuilds(string worldName) {
+            string GUILDS_FULL_URL = $"{TibiaDataFullUrl}/guilds/{worldName}.json";
+            string data = await httpClient.GetStringAsync(GUILDS_FULL_URL);
+            return data.Deserialize<GuildsData>();
+        }
+
+        public async Task<GuildInformationData> GetGuild(string guildName) {
+            string GUILD_FULL_URL = $"{TibiaDataFullUrl}/guild/{guildName}.json";
+            string data = await httpClient.GetStringAsync(GUILD_FULL_URL);
+            return data.Deserialize<GuildInformationData>();
+        }
     }
 }
