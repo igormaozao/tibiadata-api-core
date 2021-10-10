@@ -52,5 +52,11 @@ namespace TibiaDataApiCore {
             string data = await httpClient.GetStringAsync(WORLD_FULL_URL);
             return data.Deserialize<WorldInformationData>();
         }
+
+        public async Task<CharactersData> GetCharacter(string characterName) {
+            string CHARACTERS_FULL_URL = $"{TibiaDataFullUrl}/characters/{characterName}.json";
+            string data = await httpClient.GetStringAsync(CHARACTERS_FULL_URL);
+            return data.Deserialize<CharactersData>();
+        }
     }
 }
