@@ -11,7 +11,7 @@ ___
 
 |API|Supported|
 |---|---|
-|Characters|:x:|
+|Characters|:heavy_check_mark:|
 |Guilds|:x:|
 |Highscores|:heavy_check_mark:|
 |Houses|:x:|
