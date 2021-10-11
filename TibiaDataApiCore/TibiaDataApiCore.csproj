@@ -2,6 +2,13 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <PackageProjectUrl>https://github.com/igormaozao/tibiadata-api-core</PackageProjectUrl>
+    <Description>A .NET library to call and handle data from TibiaData API.</Description>
+    <RepositoryUrl>https://github.com/igormaozao/tibiadata-api-core</RepositoryUrl>
+    <Copyright>GNU GPLv3 - GNU General Public License v3.0</Copyright>
+    <PackageTags>tibia, api, tibiadata</PackageTags>
+    <PackageLicenseExpression></PackageLicenseExpression>
+    <PackageReleaseNotes>Initial project release</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
