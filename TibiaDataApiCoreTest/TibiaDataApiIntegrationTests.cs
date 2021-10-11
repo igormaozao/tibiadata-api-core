@@ -1,5 +1,7 @@
 using System.Threading.Tasks;
 using TibiaDataApiCore;
+using TibiaDataApiCore.Constants;
+using TibiaDataApiCore.Extensions;
 using Xunit;
 
 namespace TibiaDataApiCoreTest {
@@ -10,14 +12,14 @@ namespace TibiaDataApiCoreTest {
         [Fact]
         public async Task Should_Call_Live_Highscore_Correctly() {
             var worldFilter = "Impera";
-            var vocationFilter = "none";
+            var vocationFilter = HighscoreVocationEnum.None;
             var hsData = await tibiaDataApi.GetHighscore(worldFilter, vocation: vocationFilter);
 
             Assert.NotNull(hsData);
 			Assert.NotNull(hsData.Highscores);
 
             Assert.Equal(worldFilter, hsData.Highscores.Filters.World);
-            Assert.Equal(vocationFilter, hsData.Highscores.Filters.Vocation);
+            Assert.Equal(vocationFilter.GetDescription(), hsData.Highscores.Filters.Vocation);
 
             Assert.True(hsData.Highscores.Data.Count > 0);
 
@@ -105,8 +107,8 @@ namespace TibiaDataApiCoreTest {
         [Fact]
         public async Task Should_Call_Live_Houses_Data_Correctly() {
             var worldName = "Antica";
-            var city = "Venore";
-            var houseType = "houses";
+            var city = HousesCityEnum.Venore;
+            var houseType = HousesTypeEnum.Houses;
 
             var data = await tibiaDataApi.GetHouses(worldName, city, houseType);
 
@@ -115,7 +117,8 @@ namespace TibiaDataApiCoreTest {
             Assert.NotNull(data.Houses);
 
             Assert.Equal(worldName, data.Houses.World);
-            Assert.Equal(city, data.Houses.Town);
+            Assert.Equal(city.GetDescription(), data.Houses.Town);
+            Assert.Equal(houseType.GetDescription(), data.Houses.Type);
 
             Assert.True(data.Houses.Houses.Count > 0);
         }
