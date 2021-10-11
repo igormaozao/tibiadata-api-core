@@ -1,17 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using static TibiaDataApiCore.Domain.BaseApiData;
 using static TibiaDataApiCore.Domain.HighscoresData;
-using static TibiaDataApiCore.Domain.HighscoresData.Highscores;
+using static TibiaDataApiCore.Domain.HighscoresData.HighscoresList;
 
 namespace TibiaDataApiCore.Domain {
-    public record HighscoresData(Highscores highscores, Information information) 
-        : BaseApiData(highscores, information) {
+    public record HighscoresData(HighscoresList Highscores, BaseInformation Information) 
+        : BaseApiData(Highscores, Information) {
 
-        public record Highscores(Filter filters, IReadOnlyList<Character> data): Data {
+        public record HighscoresList(Filter Filters, IReadOnlyList<Character> Data): BaseData {
 
-            public record Filter(string world, string category, string vocation);
-            public record Character(string name, short rank, string vocation, string world, UInt64 points, short level);
+            public record Filter(string World, string Category, string Vocation);
+            public record Character(string Name, short Rank, string Vocation, string World, ulong Points, short Level);
 
         }
     }

@@ -1,4 +1,3 @@
-using System.Linq;
 using System.Threading.Tasks;
 using TibiaDataApiCore;
 using Xunit;
@@ -15,14 +14,14 @@ namespace TibiaDataApiCoreTest {
             var hsData = await tibiaDataApi.GetHighscore(worldFilter, vocation: vocationFilter);
 
             Assert.NotNull(hsData);
-			Assert.NotNull(hsData.highscores);
+			Assert.NotNull(hsData.Highscores);
 
-            Assert.Equal(worldFilter, hsData.highscores.filters.world);
-            Assert.Equal(vocationFilter, hsData.highscores.filters.vocation);
+            Assert.Equal(worldFilter, hsData.Highscores.Filters.World);
+            Assert.Equal(vocationFilter, hsData.Highscores.Filters.Vocation);
 
-            Assert.True(hsData.highscores.data.Count > 0);
+            Assert.True(hsData.Highscores.Data.Count > 0);
 
-            Assert.Equal((short)2, hsData.information.ApiVersion);
+            Assert.Equal((short)2, hsData.Information.ApiVersion);
 		}
 
         [Fact]
@@ -30,11 +29,11 @@ namespace TibiaDataApiCoreTest {
             var data = await tibiaDataApi.GetWorlds();
 
             Assert.NotNull(data);
-            Assert.NotNull(data.information);
-            Assert.NotNull(data.worlds);
-            Assert.NotNull(data.worlds.allworlds);
+            Assert.NotNull(data.Information);
+            Assert.NotNull(data.Worlds);
+            Assert.NotNull(data.Worlds.Allworlds);
 
-            Assert.True(data.worlds.allworlds.Count > 0);
+            Assert.True(data.Worlds.Allworlds.Count > 0);
         }
 
         [Fact]
@@ -43,12 +42,12 @@ namespace TibiaDataApiCoreTest {
             var data = await tibiaDataApi.GetWorld(worldName);
 
             Assert.NotNull(data);
-            Assert.NotNull(data.information);
-            Assert.NotNull(data.world);
-            Assert.NotNull(data.world.worldInformation);
-            Assert.NotNull(data.world.playersOnline);
+            Assert.NotNull(data.Information);
+            Assert.NotNull(data.World);
+            Assert.NotNull(data.World.WorldInformation);
+            Assert.NotNull(data.World.PlayersOnline);
 
-            Assert.True(data.world.playersOnline.Count > 0);
+            Assert.True(data.World.PlayersOnline.Count > 0);
         }
 
         [Fact]
@@ -57,14 +56,14 @@ namespace TibiaDataApiCoreTest {
             var data = await tibiaDataApi.GetCharacter(charName);
 
             Assert.NotNull(data);
-            Assert.NotNull(data.information);
-            Assert.NotNull(data.characters);
+            Assert.NotNull(data.Information);
+            Assert.NotNull(data.Characters);
 
-            Assert.Equal(charName, data.characters.data.name);
-            Assert.Equal("Thais", data.characters.data.residence);
-            Assert.Equal("Relembra", data.characters.data.world);
+            Assert.Equal(charName, data.Characters.Data.Name);
+            Assert.Equal("Thais", data.Characters.Data.Residence);
+            Assert.Equal("Relembra", data.Characters.Data.World);
 
-            Assert.Contains(data.characters.otherCharacters, c => c.name == "Rogi Returns");
+            Assert.Contains(data.Characters.OtherCharacters, c => c.Name == "Rogi Returns");
         }
 
         [Fact]
@@ -73,14 +72,14 @@ namespace TibiaDataApiCoreTest {
             var data = await tibiaDataApi.GetGuilds(worldName);
 
             Assert.NotNull(data);
-            Assert.NotNull(data.information);
-            Assert.NotNull(data.guilds);
-            Assert.NotNull(data.guilds.world);
-            Assert.NotNull(data.guilds.active);
+            Assert.NotNull(data.Information);
+            Assert.NotNull(data.Guilds);
+            Assert.NotNull(data.Guilds.World);
+            Assert.NotNull(data.Guilds.Active);
 
-            Assert.Equal(worldName, data.guilds.world);
+            Assert.Equal(worldName, data.Guilds.World);
 
-            Assert.True(data.guilds.active.Count > 0);
+            Assert.True(data.Guilds.Active.Count > 0);
         }
 
         [Fact]
@@ -92,15 +91,15 @@ namespace TibiaDataApiCoreTest {
             var data = await tibiaDataApi.GetGuild(guildName);
 
             Assert.NotNull(data);
-            Assert.NotNull(data.information);
-            Assert.NotNull(data.guild);
-            Assert.NotNull(data.guild.data);
+            Assert.NotNull(data.Information);
+            Assert.NotNull(data.Guild);
+            Assert.NotNull(data.Guild.Data);
 
-            Assert.Equal(guildName, data.guild.data.name);
-            Assert.Equal(guildWorld, data.guild.data.world);
-            Assert.Equal(redRoseFoundDate, data.guild.data.founded);
+            Assert.Equal(guildName, data.Guild.Data.Name);
+            Assert.Equal(guildWorld, data.Guild.Data.World);
+            Assert.Equal(redRoseFoundDate, data.Guild.Data.Founded);
 
-            Assert.True(data.guild.members.Count > 0);
+            Assert.True(data.Guild.Members.Count > 0);
         }
 
         [Fact]
@@ -112,13 +111,13 @@ namespace TibiaDataApiCoreTest {
             var data = await tibiaDataApi.GetHouses(worldName, city, houseType);
 
             Assert.NotNull(data);
-            Assert.NotNull(data.information);
-            Assert.NotNull(data.houses);
+            Assert.NotNull(data.Information);
+            Assert.NotNull(data.Houses);
 
-            Assert.Equal(worldName, data.houses.world);
-            Assert.Equal(city, data.houses.town);
+            Assert.Equal(worldName, data.Houses.World);
+            Assert.Equal(city, data.Houses.Town);
 
-            Assert.True(data.houses.houses.Count > 0);
+            Assert.True(data.Houses.Houses.Count > 0);
         }
 
         [Fact]
@@ -130,13 +129,13 @@ namespace TibiaDataApiCoreTest {
             var data = await tibiaDataApi.GetHouse(worldName, houseId);
 
             Assert.NotNull(data);
-            Assert.NotNull(data.information);
-            Assert.NotNull(data.house);
-            Assert.NotNull(data.house.status);
+            Assert.NotNull(data.Information);
+            Assert.NotNull(data.House);
+            Assert.NotNull(data.House.Status);
 
-            Assert.Equal(worldName, data.house.world);
-            Assert.Equal(houseType, data.house.type);
-            Assert.Equal(houseId, data.house.houseid);
+            Assert.Equal(worldName, data.House.World);
+            Assert.Equal(houseType, data.House.Type);
+            Assert.Equal(houseId, data.House.Houseid);
         }
 
         [Fact]
@@ -145,10 +144,10 @@ namespace TibiaDataApiCoreTest {
             var data = await tibiaDataApi.GetLatestNews();
 
             Assert.NotNull(data);
-            Assert.NotNull(data.information);
-            Assert.NotNull(data.newslist);
+            Assert.NotNull(data.Information);
+            Assert.NotNull(data.Newslist);
 
-            Assert.Equal("latestnews", data.newslist.type);
+            Assert.Equal("latestnews", data.Newslist.Type);
         }
 
         [Fact]
@@ -157,10 +156,10 @@ namespace TibiaDataApiCoreTest {
             var data = await tibiaDataApi.GetLatestNewsTickers();
 
             Assert.NotNull(data);
-            Assert.NotNull(data.information);
-            Assert.NotNull(data.newslist);
+            Assert.NotNull(data.Information);
+            Assert.NotNull(data.Newslist);
 
-            Assert.Equal("newstickers", data.newslist.type);
+            Assert.Equal("newstickers", data.Newslist.Type);
         }
 
         [Fact]
@@ -170,10 +169,10 @@ namespace TibiaDataApiCoreTest {
             var data = await tibiaDataApi.GetNews(newsId);
 
             Assert.NotNull(data);
-            Assert.NotNull(data.information);
-            Assert.NotNull(data.news);
+            Assert.NotNull(data.Information);
+            Assert.NotNull(data.News);
 
-            Assert.Equal(newsId, data.news.id);
+            Assert.Equal(newsId, data.News.Id);
         }
 
         [Fact]
@@ -183,13 +182,13 @@ namespace TibiaDataApiCoreTest {
             var data = await tibiaDataApi.GetNews(newsId);
 
             Assert.NotNull(data);
-            Assert.NotNull(data.information);
-            Assert.NotNull(data.news);
+            Assert.NotNull(data.Information);
+            Assert.NotNull(data.News);
 
-            Assert.Equal(0, data.news.id);
-            Assert.Null(data.news.title);
-            Assert.Null(data.news.content);
-            Assert.Null(data.news.date);
+            Assert.Equal(0, data.News.Id);
+            Assert.Null(data.News.Title);
+            Assert.Null(data.News.Content);
+            Assert.Null(data.News.Date);
         }
     }
 }

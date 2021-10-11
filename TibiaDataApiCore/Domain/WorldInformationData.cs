@@ -2,20 +2,20 @@
 using TibiaDataApiCore.Domain.Commons;
 using static TibiaDataApiCore.Domain.BaseApiData;
 using static TibiaDataApiCore.Domain.WorldInformationData;
-using static TibiaDataApiCore.Domain.WorldInformationData.World;
-using static TibiaDataApiCore.Domain.WorldInformationData.World.WorldInformation;
+using static TibiaDataApiCore.Domain.WorldInformationData.WorldData;
+using static TibiaDataApiCore.Domain.WorldInformationData.WorldData.WorldInfoData;
 
 namespace TibiaDataApiCore.Domain {
-    public record WorldInformationData(World world, Information information) : BaseApiData(world, information) {
+    public record WorldInformationData(WorldData World, BaseInformation Information) : BaseApiData(World, Information) {
 
-        public record World(WorldInformation worldInformation, IReadOnlyCollection<PlayersOnline> playersOnline): Data() {
+        public record WorldData(WorldInfoData WorldInformation, IReadOnlyCollection<PlayersOnlineData> PlayersOnline): BaseData() {
             
-            public record WorldInformation(string name, int playersOnline, OnlineRecord onlineRecord, string creationDate, string location, string pvpType, IReadOnlyCollection<string> worldQuestTitles, string battleyeStatus) {
+            public record WorldInfoData(string Name, int PlayersOnline, OnlineRecordData OnlineRecord, string CreationDate, string Location, string PvpType, IReadOnlyCollection<string> WorldQuestTitles, string BattleyeStatus) {
                 
-                public record OnlineRecord(int players, TimeZoneDate date);
+                public record OnlineRecordData(int players, TimeZoneDate date);
             }
 
-            public record PlayersOnline(string name, short level, string vocation);
+            public record PlayersOnlineData(string Name, short Level, string Vocation);
         }
     }
 }

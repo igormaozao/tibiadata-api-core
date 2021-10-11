@@ -7,34 +7,34 @@ using static TibiaDataApiCore.Domain.CharactersData.Character.CharacterData;
 using static TibiaDataApiCore.Domain.CharactersData.Character.CharacterDeath;
 
 namespace TibiaDataApiCore.Domain {
-    public record CharactersData(Character characters, Information information): BaseApiData(characters, information) {
+    public record CharactersData(Character Characters, BaseInformation Information): BaseApiData(Characters, Information) {
 
         public record Character(
-            CharacterData data, 
-            IReadOnlyCollection<CharacterAchivements> achievements, 
-            IReadOnlyCollection<CharacterDeath> deaths,
-            CharacterAccountInformation accountInformation,
-            IReadOnlyCollection<CharacterOtherCharacters> otherCharacters) : Data() {
+            CharacterData Data, 
+            IReadOnlyCollection<CharacterAchivements> Achievements, 
+            IReadOnlyCollection<CharacterDeath> Deaths,
+            CharacterAccountInformation AccountInformation,
+            IReadOnlyCollection<CharacterOtherCharacters> OtherCharacters) : BaseData() {
 
-            public record CharacterData(string name, string title, string sex, string vocation, short level, short achivementPoints, string world, string residence, 
-                string marriedTo, IReadOnlyCollection<CharacterHouse> houses, CharacterGuild guild, IReadOnlyCollection<TimeZoneDate> lastLogin, string comment, string accountStatus, string status) {
+            public record CharacterData(string Name, string Title, string Sex, string Vocation, short Level, short AchivementPoints, string World, string Residence, 
+                string MarriedTo, IReadOnlyCollection<CharacterHouse> Houses, CharacterGuild Guild, IReadOnlyCollection<TimeZoneDate> LastLogin, string Comment, string AccountStatus, string Status) {
 
-                public record CharacterHouse(string name, string town, string paid, string world, int houseid);
+                public record CharacterHouse(string Name, string Town, string Paid, string World, int Houseid);
 
-                public record CharacterGuild(string name, string rank);
+                public record CharacterGuild(string Name, string Rank);
 
             }
 
-            public record CharacterAchivements(short stars, string name);
+            public record CharacterAchivements(short Stars, string Name);
 
-            public record CharacterDeath(TimeZoneDate date, short level, string reason, IReadOnlyCollection<CharacterDeathInvolved> involved) {
+            public record CharacterDeath(TimeZoneDate Date, short Level, string Reason, IReadOnlyCollection<CharacterDeathInvolved> Involved) {
 
-                public record CharacterDeathInvolved(string name);
+                public record CharacterDeathInvolved(string Name);
             }
 
-            public record CharacterAccountInformation(string loyaltyTitle, TimeZoneDate created);
+            public record CharacterAccountInformation(string LoyaltyTitle, TimeZoneDate Created);
 
-            public record CharacterOtherCharacters(string name, string world, string status);
+            public record CharacterOtherCharacters(string Name, string World, string Status);
 
             
         }

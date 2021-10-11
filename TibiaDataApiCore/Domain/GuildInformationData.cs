@@ -6,33 +6,33 @@ using static TibiaDataApiCore.Domain.GuildInformationData.GuildInformation.Guild
 using static TibiaDataApiCore.Domain.GuildInformationData.GuildInformation.GuildMembersData;
 
 namespace TibiaDataApiCore.Domain {
-    public record GuildInformationData(GuildInformation guild, Information information): BaseApiData(guild, information) {
+    public record GuildInformationData(GuildInformation Guild, BaseInformation Information): BaseApiData(Guild, Information) {
 
-        public record GuildInformation(GuildData data, IReadOnlyCollection<GuildMembersData> members) : Data {
+        public record GuildInformation(GuildData Data, IReadOnlyCollection<GuildMembersData> Members) : BaseData {
 
             public record GuildData(
-                string name, 
-                string description, 
-                GuildHallData guildhall,
-                bool application,
-                bool war,
-                short onlineStatus,
-                short offlineStatus,
-                bool disbanded,
-                short totalmembers,
-                short totalinvited,
-                string world,
-                string founded,
-                bool active,
-                string homepage,
-                string guildlogo) {
+                string Name, 
+                string Description, 
+                GuildHallData Guildhall,
+                bool Application,
+                bool War,
+                short OnlineStatus,
+                short OfflineStatus,
+                bool Disbanded,
+                short Totalmembers,
+                short Totalinvited,
+                string World,
+                string Founded,
+                bool Active,
+                string Homepage,
+                string Guildlogo) {
                 
-                public record GuildHallData(string name, string town, string paid, string world, int houseid);
+                public record GuildHallData(string Name, string Town, string Paid, string World, int Houseid);
             }
 
-            public record GuildMembersData(string rankTitle, IReadOnlyCollection<GuildCharacterData> characters) {
+            public record GuildMembersData(string RankTitle, IReadOnlyCollection<GuildCharacterData> Characters) {
 
-                public record GuildCharacterData(string name, string nick, short level, string vocation, string joined, string status);
+                public record GuildCharacterData(string Name, string Nick, short Level, string Vocation, string Joined, string Status);
             }
         }
     }

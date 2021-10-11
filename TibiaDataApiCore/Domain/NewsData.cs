@@ -5,17 +5,17 @@ using static TibiaDataApiCore.Domain.NewsData;
 using static TibiaDataApiCore.Domain.NewsData.NewsList;
 
 namespace TibiaDataApiCore.Domain {
-    public record NewsData(NewsList newslist, Information information): BaseApiData(newslist, information) {
+    public record NewsData(NewsList Newslist, BaseInformation Information): BaseApiData(Newslist, Information) {
 
-        public record NewsList(string type, IReadOnlyCollection<News> data): Data {
+        public record NewsList(string Type, IReadOnlyCollection<NewsInfo> Data): BaseData {
 
-            public record News(
-                int id,
-                string type,
-                string news,
-                string apiurl,
-                string tibiaurl,
-                TimeZoneDate date
+            public record NewsInfo(
+                int Id,
+                string Type,
+                string News,
+                string Apiurl,
+                string Tibiaurl,
+                TimeZoneDate Date
             );
         }
     }

@@ -1,23 +1,23 @@
 ﻿using System.Collections.Generic;
 using static TibiaDataApiCore.Domain.BaseApiData;
 using static TibiaDataApiCore.Domain.HousesData;
-using static TibiaDataApiCore.Domain.HousesData.Houses;
+using static TibiaDataApiCore.Domain.HousesData.HousesList;
 
 namespace TibiaDataApiCore.Domain {
-    public record HousesData(Houses houses, Information information): BaseApiData(houses, information) {
+    public record HousesData(HousesList Houses, BaseInformation Information): BaseApiData(Houses, Information) {
 
-        public record Houses(
-            string town,
-            string world,
-            string type,
-            IReadOnlyCollection<House> houses): Data {
+        public record HousesList(
+            string Town,
+            string World,
+            string Type,
+            IReadOnlyCollection<House> Houses): BaseData {
 
             public record House(
-                int houseid, 
-                string name, 
-                short size,
-                int rent,
-                string status);
+                int Houseid, 
+                string Name, 
+                short Size,
+                int Rent,
+                string Status);
         }
     }
 }

@@ -1,14 +1,14 @@
 ﻿using System.Collections.Generic;
 using static TibiaDataApiCore.Domain.BaseApiData;
 using static TibiaDataApiCore.Domain.GuildsData;
-using static TibiaDataApiCore.Domain.GuildsData.Guilds;
+using static TibiaDataApiCore.Domain.GuildsData.GuildsList;
 
 namespace TibiaDataApiCore.Domain {
-    public record GuildsData(Guilds guilds, Information information): BaseApiData(guilds, information) {
+    public record GuildsData(GuildsList Guilds, BaseInformation Information): BaseApiData(Guilds, Information) {
 
-        public record Guilds(string world, IReadOnlyCollection<Guild> active, IReadOnlyCollection<Guild> formation): Data() {
+        public record GuildsList(string World, IReadOnlyCollection<Guild> Active, IReadOnlyCollection<Guild> Formation): BaseData() {
 
-            public record Guild(string name, string desc, string guildlogo);
+            public record Guild(string Name, string Desc, string Guildlogo);
         }
     }
 }

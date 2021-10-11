@@ -3,13 +3,13 @@ using static TibiaDataApiCore.Domain.BaseApiData;
 using static TibiaDataApiCore.Domain.NewsInformationData;
 
 namespace TibiaDataApiCore.Domain {
-    public record NewsInformationData(News news, Information information) {
+    public record NewsInformationData(NewsInfo News, BaseInformation Information) {
 
-        public record News(
-            int id,
-            string title,
-            string content,
-            TimeZoneDate date
+        public record NewsInfo(
+            int Id,
+            string Title,
+            string Content,
+            TimeZoneDate Date
         );
     }
 }

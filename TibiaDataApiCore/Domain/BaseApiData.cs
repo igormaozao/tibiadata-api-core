@@ -2,11 +2,11 @@
 using static TibiaDataApiCore.Domain.BaseApiData;
 
 namespace TibiaDataApiCore.Domain {
-    public record BaseApiData(Data data, Information information) {
+    public record BaseApiData(BaseData Data, BaseInformation Information) {
 
-        public abstract record Data;
+        public abstract record BaseData;
 
-        public record Information(
+        public record BaseInformation(
             short ApiVersion,
             float ExecutionTime,
             DateTime LastUpdated,
