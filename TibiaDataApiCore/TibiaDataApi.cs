@@ -82,5 +82,23 @@ namespace TibiaDataApiCore {
             string data = await httpClient.GetStringAsync(HOUSE_FULL_URL);
             return data.Deserialize<HouseInformationData>();
         }
+
+        public async Task<NewsData> GetLatestNews() {
+            string NEWS_FULL_URL = $"{TibiaDataFullUrl}/latestnews.json";
+            string data = await httpClient.GetStringAsync(NEWS_FULL_URL);
+            return data.Deserialize<NewsData>();
+        }
+
+        public async Task<NewsData> GetLatestNewsTickers() {
+            string NEWS_FULL_URL = $"{TibiaDataFullUrl}/newstickers.json";
+            string data = await httpClient.GetStringAsync(NEWS_FULL_URL);
+            return data.Deserialize<NewsData>();
+        }
+
+        public async Task<NewsInformationData> GetNews(int newsId) {
+            string NEWS_FULL_URL = $"{TibiaDataFullUrl}/news/{newsId}.json";
+            string data = await httpClient.GetStringAsync(NEWS_FULL_URL);
+            return data.Deserialize<NewsInformationData>();
+        }
     }
 }
