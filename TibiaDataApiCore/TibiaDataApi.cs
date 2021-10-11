@@ -1,17 +1,9 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System;
 using System.Net.Http;
-using System.Net.Http.Json;
-using System.Text;
-using System.Text.Json;
-using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using TibiaDataApiCore.Constants;
 using TibiaDataApiCore.Domain;
 using TibiaDataApiCore.Extensions;
-using static TibiaDataApiCore.Domain.HighscoresData;
 
 namespace TibiaDataApiCore {
     public class TibiaDataApi {
@@ -32,9 +24,12 @@ namespace TibiaDataApiCore {
             TibiaDataApiVersion = tibiaDataApiVersion;
         }
 
-        public async Task<HighscoresData> GetHighscore(string world, string category = "experience", string vocation = "all") {
+        public async Task<HighscoresData> GetHighscore(
+            string world, 
+            HighscoresCategoryEnum category = HighscoresCategoryEnum.Experience,
+            HighscoreVocationEnum vocation = HighscoreVocationEnum.All) {
             
-            string HS_FULL_URL = $"{TibiaDataFullUrl}/highscores/{world}/{category}/{vocation}.json";
+            string HS_FULL_URL = $"{TibiaDataFullUrl}/highscores/{world}/{category.GetDescription()}/{vocation.GetDescription()}.json";
 
             string data = await httpClient.GetStringAsync(HS_FULL_URL);
 
@@ -71,8 +66,12 @@ namespace TibiaDataApiCore {
             return data.Deserialize<GuildInformationData>();
         }
 
-        public async Task<HousesData> GetHouses(string worldName, string city = "Ab'dendriel", string type = "houses") {
-            string HOUSES_FULL_URL = $"{TibiaDataFullUrl}/houses/{worldName}/{city}/{type}.json";
+        public async Task<HousesData> GetHouses(
+            string worldName,
+            HousesCityEnum city = HousesCityEnum.AbDendriel,
+            HousesTypeEnum type = HousesTypeEnum.Houses) {
+
+            string HOUSES_FULL_URL = $"{TibiaDataFullUrl}/houses/{worldName}/{city.GetDescription()}/{type.GetDescription()}.json";
             string data = await httpClient.GetStringAsync(HOUSES_FULL_URL);
             return data.Deserialize<HousesData>();
         }
