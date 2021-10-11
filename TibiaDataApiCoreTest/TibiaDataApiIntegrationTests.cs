@@ -138,5 +138,58 @@ namespace TibiaDataApiCoreTest {
             Assert.Equal(houseType, data.house.type);
             Assert.Equal(houseId, data.house.houseid);
         }
+
+        [Fact]
+        public async Task Should_Call_Live_Latest_News_Data_Correctly() {
+
+            var data = await tibiaDataApi.GetLatestNews();
+
+            Assert.NotNull(data);
+            Assert.NotNull(data.information);
+            Assert.NotNull(data.newslist);
+
+            Assert.Equal("latestnews", data.newslist.type);
+        }
+
+        [Fact]
+        public async Task Should_Call_Live_Latest_News_Tickers_Data_Correctly() {
+
+            var data = await tibiaDataApi.GetLatestNewsTickers();
+
+            Assert.NotNull(data);
+            Assert.NotNull(data.information);
+            Assert.NotNull(data.newslist);
+
+            Assert.Equal("newstickers", data.newslist.type);
+        }
+
+        [Fact]
+        public async Task Should_Call_Live_News_Information_Data_Correctly() {
+            var newsId = 3560;
+
+            var data = await tibiaDataApi.GetNews(newsId);
+
+            Assert.NotNull(data);
+            Assert.NotNull(data.information);
+            Assert.NotNull(data.news);
+
+            Assert.Equal(newsId, data.news.id);
+        }
+
+        [Fact]
+        public async Task Should_Call_Live_News_Information_Data_With_Wrong_Id() {
+            var newsId = 999999;
+
+            var data = await tibiaDataApi.GetNews(newsId);
+
+            Assert.NotNull(data);
+            Assert.NotNull(data.information);
+            Assert.NotNull(data.news);
+
+            Assert.Equal(0, data.news.id);
+            Assert.Null(data.news.title);
+            Assert.Null(data.news.content);
+            Assert.Null(data.news.date);
+        }
     }
 }
