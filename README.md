@@ -22,11 +22,13 @@ ___
 
 ___
 
-#### How to use
+#### Install
 
 Clone this repository, build the main project and add it as reference in your project.
 
 > dotnet build TibiaDataApiCore/
+
+#### Usage
 
 ```C#
 var api = new TibiaDataApi(); // Create the api client instance
