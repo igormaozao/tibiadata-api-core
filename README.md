@@ -34,7 +34,10 @@ Clone this repository, build the main project and add it as reference in your pr
 var api = new TibiaDataApi(); // Create the api client instance
 
 // Highscores API
-var highscoresList = api.GetHighscore(worldName: "Antica", category: "experience", vocation: "knight");
+var highscoresList = api.GetHighscore(
+    worldName: "Antica", 
+    category: HighscoresCategoryEnum.Experience, 
+    vocation: HighscoreVocationEnum.Knight);
 
 // Worlds API
 var worldsList = api.GetWorlds();
@@ -48,7 +51,11 @@ var guildsList = api.GetGuilds(worldName: "Antica");
 var guild = api.GetGuild(guildName: "Red Rose");
 
 // Houses API
-var housesList = api.GetHouses(worldName: "Antica", city: "Venore", type: "houses");
+var housesList = api.GetHouses(
+    worldName: "Antica", 
+    city: HousesCityEnum.Venore, 
+    type: HousesTypeEnum.Houses);
+
 var house = api.GetHouse(worldName: "Antica", houseId: 40211);
 
 // News API
