@@ -7,7 +7,7 @@ For now you can check at [TibiaData Doc](https://tibiadata.com/doc-api-v2/) webs
 
 ___
 
-#### Supported TibiaData API's
+### Supported TibiaData API's
 
 **Version 2**
 
@@ -22,13 +22,17 @@ ___
 
 ___
 
-#### Install
+### Install
 
-Clone this repository, build the main project and add it as reference in your project.
+This library is available as a NuGet package
 
-> dotnet build TibiaDataApiCore/
+```Shell
+Install-Package TibiaDataApiCore
+# or
+dotnet add package TibiaDataApiCore
+```
 
-#### Usage
+### Usage
 
 ```C#
 var api = new TibiaDataApi(); // Create the api client instance
@@ -63,6 +67,12 @@ var latestNewsList = api.GetLatestNews();
 var latestNewsTickersList = api.GetLatestNewsTickers();
 var news = api.GetNews(newsId: 3560);
 ```
+
+___
+
+### Contributing
+
+Feel free to submit a PR or open an issue :)
 
 ___
 
