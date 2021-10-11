@@ -15,5 +15,5 @@ ___
 |Guilds|:heavy_check_mark:|
 |Highscores|:heavy_check_mark:|
 |Houses|:heavy_check_mark:|
-|News|:x:|
+|News|:heavy_check_mark:|
 |Worlds|:heavy_check_mark:|
